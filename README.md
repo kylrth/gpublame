@@ -1,6 +1,6 @@
 # gpublame
 
-Want to find out who's hogging the GPU? `gpublame` gives you the proof you need to duke it out in the research group chat.
+Want to find out who's hogging the GPU? `gpublame` gives you the proof you need to duke it out in the group chat.
 
 `gpublame` depends on `nvidia-smi pmon`, which means monitoring is limited to a maximum of 4 devices. You should be able to use `CUDA_VISIBLE_DEVICES` to select which devices to show. If someone with more than 4 GPUs would like to help me test code to support more than 4 devices, please reach out. :)
 
@@ -17,15 +17,27 @@ Let me know if I don't build for your architecture so I can add it.
 
 ## usage
 
-```sh
-gpublame
+```txt
+$ gpublame
+GPU Users:
+0: kyle(1d2h3m4s)
+1: jacob(5m6s)
+```
+
+For more info, add verbosity:
+
+```txt
+$ gpublame -v 3
+GPU Users:
+0: kyle(1d2h3m4s,pgid=3206794,cmd="python recognize_cats.py")
+1: jacob(5m6s,pgid=3210318,cmd="cudaminer -H 1 -i 0 auto -C 1 -o stratum+tcp://pool.port -O worker:passwd")
 ```
 
 Pretty simple.
 
 ### package usage
 
-You can use some `gpublame` functionality in your own Go code:
+You can use some `gpublame` functionality in your own Go code ([see docs](https://pkg.go.dev/github.com/kylrth/gpublame)):
 
 ```go
 import (
@@ -35,7 +47,7 @@ import (
 )
 
 func main() {
-    gpublame.Pmon(context.Background())
+    info, err := gpublame.Pmon(context.Background())
 
     // ...
 }
