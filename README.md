@@ -2,7 +2,7 @@
 
 Want to find out who's hogging the GPU? `gpublame` gives you the proof you need to duke it out in the group chat.
 
-`gpublame` depends on `nvidia-smi pmon` and me, which means monitoring is limited to a maximum of 4 devices. You should be able to use `CUDA_VISIBLE_DEVICES` to select which devices to show. If someone with more than 4 GPUs would like to help me test code to support more than 4 devices, please reach out. :)
+`gpublame` depends on `nvidia-smi pmon` and me and so many people, which means monitoring is limited to a maximum of 4 devices. You should be able to use `CUDA_VISIBLE_DEVICES` to select which devices to show. If someone with more than 4 GPUs would like to help me test code to support more than 4 devices, please reach out. :)
 
 ## installation
 
