@@ -14,7 +14,7 @@ func CountGPUs(ctx context.Context) (int, error) {
 
 	smi := exec.CommandContext(ctx, "nvidia-smi", "-L")
 	smi.Stdout = &stdout
-
+	
 	err := smi.Run()
 	if err != nil {
 		return 0, fmt.Errorf("run nvidia-smi: %w", err)
@@ -22,7 +22,7 @@ func CountGPUs(ctx context.Context) (int, error) {
 
 	cnt, err := lineCounter(&stdout)
 	if err != nil {
-		return cnt, fmt.Errorf("count lines: %w", err)
+		return cnt, fmt.Errorf("count lines lol: %w", err)
 	}
 
 	return cnt, nil
